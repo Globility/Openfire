@@ -273,8 +273,8 @@
                 destdir="${compile.dir}"
                 includeAntRuntime="no"
                 debug="on"
-                source="1.5"
-                target="1.5"
+                source="1.7"
+                target="1.7"
                 >
             <src path="${src.java.dir}"/>
             <patternset refid="compile.sources"/>
@@ -293,8 +293,8 @@
                         destdir="${overlay.compile.dir}"
                         includeAntRuntime="no"
                         debug="on"
-                        source="1.5"
-                        target="1.5"
+                        source="1.7"
+                        target="1.7"
                         >
                     <src path="${overlay.src.dir}"/>
                     <patternset refid="compile.sources"/>
@@ -541,8 +541,8 @@
                 destdir="${jspc.classes.dest.dir}"
                 includeAntRuntime="no"
                 debug="on"
-                source="1.5"
-                target="1.5"
+                source="1.7"
+                target="1.7"
                 includes="org/jivesoftware/openfire/admin/**/*.java"
                 >
             <src path="${jspc.java.dest.dir}"/>
@@ -591,8 +591,8 @@
                 destdir="${test.classes.dest.dir}"
                 includeAntRuntime="no"
                 debug="on"
-                source="1.5"
-                target="1.5"
+                source="1.7"
+                target="1.7"
                 >
             <src path="${src.test.java.dir}"/>
             <patternset refid="test.sources"/>
@@ -1319,8 +1319,8 @@
                         destdir="${plugin.dev.dest.dir}/@{plugin}/target/classes"
                         includeAntRuntime="no"
                         debug="on"
-                        source="1.5"
-                        target="1.5"
+                        source="1.7"
+                        target="1.7"
                         >
                     <src path="@{pluginsrc}/@{plugin}/src/java"/>
                     <classpath>
@@ -1359,7 +1359,7 @@
                             destdir="@{pluginlib}/classes"
                             includeAntRuntime="no"
                             debug="on"
-                            source="1.5"
+                            source="1.7"
                             includes="**/*.java"
                         >
                             <src path="@{pluginlib}/source"/>
@@ -1527,8 +1527,8 @@
                                 destdir="${plugin.dev.dest.dir}/@{plugin}/target/jspc/classes"
                                 includeAntRuntime="no"
                                 debug="on"
-                                source="1.5"
-                                target="1.5"
+                                source="1.7"
+                                target="1.7"
                                 >
                             <src path="${plugin.dev.dest.dir}/@{plugin}/target/jspc/java"/>
                             <classpath>

@@ -42,6 +42,7 @@ import org.jivesoftware.openfire.component.InternalComponentManager;
 import org.jivesoftware.openfire.pubsub.cluster.RefreshNodeTask;
 import org.jivesoftware.openfire.pubsub.models.AccessModel;
 import org.jivesoftware.openfire.user.UserManager;
+import org.jivesoftware.util.JiveGlobals;
 import org.jivesoftware.util.StringUtils;
 import org.jivesoftware.util.cache.CacheFactory;
 import org.slf4j.Logger;
@@ -528,9 +529,14 @@ public class PubSubEngine {
         }
         // Check if the subscriber is an anonymous user
         if (!UserManager.getInstance().isRegisteredUser(subscriberJID)) {
-            // Anonymous users cannot subscribe to the node. Return forbidden error
-            sendErrorPacket(iq, PacketError.Condition.forbidden, null);
-            return;
+	        String remoteOpenlink = JiveGlobals.getProperty("remote.component.subscription", null);
+	        if (subscriberJID.toString().equalsIgnoreCase(remoteOpenlink)) {
+	        	// do nothing
+	        } else {
+		        // Anonymous users cannot subscribe to the node. Return forbidden error
+	        	sendErrorPacket(iq, PacketError.Condition.forbidden, null);
+	        	return;
+	        }
         }
         // Check if the subscription owner is a user with outcast affiliation
         NodeAffiliate nodeAffiliate = node.getAffiliate(owner);
