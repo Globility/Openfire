@@ -458,6 +458,9 @@ public class PluginServlet extends HttpServlet {
             jspc.setClassName(filename);
             jspc.setCompile(true);
 
+            jspc.setCompilerSourceVM("1.7");
+            jspc.setCompilerTargetVM("1.7");
+            
             jspc.setClassPath(getClasspathForPlugin(plugin));
             try {
                 jspc.execute();
@@ -500,7 +503,7 @@ public class PluginServlet extends HttpServlet {
         for (URL url : pluginClassloader.getURLs()) {
             File file = new File(url.getFile());
 
-            classpath.append(file.getAbsolutePath()).append(";");
+            classpath.append(file.getAbsolutePath()).append(System.getProperty("path.separator"));
         }
 
         // Load all jars from lib
@@ -509,7 +512,7 @@ public class PluginServlet extends HttpServlet {
         final int no = libs != null ? libs.length : 0;
         for (int i = 0; i < no; i++) {
             File libFile = libs[i];
-            classpath.append(libFile.getAbsolutePath()).append(';');
+            classpath.append(libFile.getAbsolutePath()).append(System.getProperty("path.separator"));
         }
 
         File openfireRoot = pluginDirectory.getParentFile().getParentFile().getParentFile();
@@ -521,7 +524,7 @@ public class PluginServlet extends HttpServlet {
         classpath.append(openfireLib.getAbsolutePath()).append("//jasper-runtime.jar;");
 
         if (pluginEnv.getClassesDir() != null) {
-            classpath.append(pluginEnv.getClassesDir().getAbsolutePath()).append(";");
+            classpath.append(pluginEnv.getClassesDir().getAbsolutePath()).append(System.getProperty("path.separator"));
         }
         return classpath.toString();
     }
