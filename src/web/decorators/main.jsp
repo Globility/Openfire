@@ -17,6 +17,7 @@
   - limitations under the License.
 --%>
 
+<%@page import="org.jivesoftware.openfire.cluster.ClusterManager"%>
 <%@ page import="org.jivesoftware.util.StringUtils,
                  org.jivesoftware.admin.AdminConsole,
                  org.jivesoftware.util.LocaleUtils"
@@ -95,7 +96,23 @@
         <div id="jive-userstatus">
             <%= AdminConsole.getAppName() %> <%= AdminConsole.getVersionString() %><br/>
             <fmt:message key="admin.logged_in_as"><fmt:param value="<%= "<strong>"+StringUtils.escapeHTMLTags(JID.unescapeNode(webManager.getUser().getUsername()))+"</strong>" %>"/></fmt:message> - <a href="<%= path %>/index.jsp?logout=true"><%= LocaleUtils.getLocalizedString("global.logout") %></a>
+         	<br/>
+         	Clustering status  
+			<% if (ClusterManager.isClusteringStarted()) {
+                if (ClusterManager.isSeniorClusterMember()) { %>
+                    <strong>primary</strong>
+                <% }
+                else { %>
+                    <strong>secondary</strong>
+                <% }
+            }
+            else { %>
+                <strong>non-clustered</strong>
+            <% } %>
+            <br/>
+            Release <strong>0.0.4</strong>
         </div>
+        
         <div id="jive-nav">
             <div id="jive-nav-left"></div>
             <admin:tabs css="" currentcss="currentlink">
