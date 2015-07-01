@@ -110,7 +110,7 @@
                 <strong>non-clustered</strong>
             <% } %>
             <br/>
-            Release <strong>0.0.4</strong>
+            Release <strong>3.8.2-0.0.4</strong>
         </div>
         
         <div id="jive-nav">

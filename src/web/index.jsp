@@ -96,7 +96,7 @@
         }
     }
 
-    boolean rssEnabled = JiveGlobals.getBooleanProperty("rss.enabled", true);
+    boolean rssEnabled = JiveGlobals.getBooleanProperty("rss.enabled", false);
 %>
 
 <html>
